@@ -13,10 +13,18 @@ const handler = (request: Request): Response => {
       <title>Simple HTML Page</title>
     </head>
     <body>
-     <ul>
-      ${cookiesListItems}
-     </ul>
+      <h1>Server Cookies</h1>
+      <ul>
+        ${cookiesListItems}
+      </ul>
+
+      <h1>Document Cookies</h1>
+      <p id="documentCookies"></p>
     </body>
+
+    <script>
+       document.getElementById('documentCookies').innerText = document.cookie
+    </script>
     </html>
   `;
   return new Response(htmlContent, {
