@@ -1,7 +1,7 @@
 const handler = (request: Request): Response => {
   let cookiesListItems = "";
   request.headers.forEach((value, key) => {
-    cookiesListItems += `<li>${key}-${value}</li>`;
+    cookiesListItems += `<li><b>${key}</b>: ${value}</li>`;
   });
 
   const htmlContent = `
