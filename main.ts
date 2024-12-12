@@ -31,4 +31,19 @@ const handler = (request: Request): Response => {
     headers: { "content-type": "text/html; charset=utf-8" },
   });
 };
-Deno.serve({ port: 4242 }, handler);
+
+const jsonHandler = (request: Request): Response => {
+  const headers: Record<string, string> = {};
+  request.headers.forEach((value, key) => {
+    headers[key] = value;
+  });
+  const body = JSON.stringify(headers);
+  console.log(body);
+  return new Response(body, {
+    status: 200,
+    headers: {
+      "content-type": "application/json; charset=utf-8",
+    },
+  });
+};
+Deno.serve({ port: 4242 }, jsonHandler);
